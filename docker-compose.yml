@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  caddy:
+    image: caddy:2.7.5-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./app:/usr/share/caddy/app
+    depends_on:
+      - php
+
+  php:
+    image: php:8.2-fpm-alpine
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE  # Adiciona capacidade para ptrace
+    volumes:
+      - ./app:/var/www/html
+      - ./php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf

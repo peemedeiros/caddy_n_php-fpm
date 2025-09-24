@@ -1,0 +1,10 @@
+:80 {
+    root * /usr/share/caddy/app
+
+    php_fastcgi php:9000 {
+        root /var/www/html
+        index index.php
+    }
+
+    file_server
+}
