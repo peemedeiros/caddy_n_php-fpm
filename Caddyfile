@@ -1,9 +1,40 @@
 :80 {
     root * /usr/share/caddy/app
 
-    php_fastcgi php:9000 {
-        root /var/www/html
-        index index.php
+    # Status endpoints para monitoramento
+    @status {
+        path /status
+    }
+    handle @status {
+        php_fastcgi php:9000 {
+            #
+        }
+    }
+
+    @status_heavy {
+        path /status-heavy
+    }
+    handle @status_heavy {
+        php_fastcgi php:9001 {
+            #
+        }
+    }
+
+    # Roteamento para requisições "pesadas"
+    @heavy_requests {
+        path /heavy.php
+    }
+    handle @heavy_requests {
+        php_fastcgi php:9001 {
+            root /var/www/html
+        }
+    }
+
+    # Roteamento padrão para o restante das requisições
+    handle {
+        php_fastcgi php:9000 {
+            root /var/www/html
+        }
     }
 
     file_server

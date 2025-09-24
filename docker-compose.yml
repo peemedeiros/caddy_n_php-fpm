@@ -19,4 +19,5 @@ services:
       - SYS_PTRACE  # Adiciona capacidade para ptrace
     volumes:
       - ./app:/var/www/html
-      - ./php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./php-fpm-default.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./php-fpm-heavy.conf:/usr/local/etc/php-fpm.d/www-heavy.conf

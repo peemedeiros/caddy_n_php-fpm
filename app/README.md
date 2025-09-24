@@ -1,5 +1,6 @@
 # Repositório de estudo
 ***
+### Testes básicos com caddy e php-fpm:
 Estou realizando alguns testes no servidor web Caddy como um proxy reverso para o PHP-FPM. <br>
 No primeiro momento estou apenas realizando um teste com acesso simples em um script PHP. Estou adicionando o arquivo de
 configuração do PHP-FPM para emular problemas de picos de acessos e como posso lidar com esses problemas.
@@ -34,3 +35,11 @@ servidor  disponibiliza. <br>
 e.g: script usa 60MBs por processo e nosso servidor possui 1GB de RAM:
 <br> ```1024mb / 60mb = ~17``` <br>
 Então podemos definir o valor de pm.max_children como 16 para termos uma margem segura.
+***
+### Implementando o Pool Segregation:
+Basicamente estou separando como o caddy irá direcionar certos tipos de requisições para os diferentes pools. No 
+meu exemplo estou separando os arquivos index.php e heavy.php para que sejam processados por diferentes pools. O
+index.php simula requisições simples, enquanto o heavy.php estou simulando um processamento mais demorado.
+
+**Dúvida:** _Como os recursos computacionais se comportam com essa estratégia de pool
+segregation?_
