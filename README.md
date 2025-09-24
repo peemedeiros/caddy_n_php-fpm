@@ -1,4 +1,4 @@
-# Repositório de estudo
+# Deep Dive PHP-FPM
 ***
 ### Testes básicos com caddy e php-fpm:
 Estou realizando alguns testes no servidor web Caddy como um proxy reverso para o PHP-FPM. <br>
@@ -7,7 +7,7 @@ configuração do PHP-FPM para emular problemas de picos de acessos e como posso
 
 Um resumo sobre as configs do php-fpm que testei:
 
-```
+
 - pm = dynamic
   - Esta é a forma com que o processo master, ou seja, o processo que gerencia e controla a distribuição das tarefas para os workers disponíveis (children).
   - Ele pode ser configurado para:
@@ -27,7 +27,7 @@ Um resumo sobre as configs do php-fpm que testei:
   - Número mínimo de workers ociosos que devem estar prontos para receber processos
 - pm.max_spare_servers = 3
   - Número máximo de workers ociosos que devem estar prontos para receber processos
-```
+
 
 Outro ponto que observei sobre o assunto foi o cáuculo que pode ser feito para definir o pm.max_children: <br>
 Basicamente temos que dividir o valor de memória que cada processo consome, pela quantidade de memória máxima que o 
