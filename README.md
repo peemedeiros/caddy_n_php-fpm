@@ -1,5 +1,5 @@
 # Deep Dive PHP-FPM
-***
+
 ### Testes básicos com caddy e php-fpm:
 Estou realizando alguns testes no servidor web Caddy como um proxy reverso para o PHP-FPM. <br>
 No primeiro momento estou apenas realizando um teste com acesso simples em um script PHP. Estou adicionando o arquivo de
@@ -42,4 +42,5 @@ meu exemplo estou separando os arquivos index.php e heavy.php para que sejam pro
 index.php simula requisições simples, enquanto o heavy.php estou simulando um processamento mais demorado.
 
 **Dúvida:** _Como os recursos computacionais se comportam com essa estratégia de pool
+
 segregation?_
